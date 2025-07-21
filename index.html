@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geetanjali Singh </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --bg-light: #f7f8fa;
+      --header-bg: #fff;
+      --sidebar-bg: #2c3e50;
+      --accent: #e5e9f2;
+      --card-bg: #fff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --radius: 22px;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    * { box-sizing: border-box; }
+
+    html, body {
+      background: var(--bg-light);
+      font-family: 'Inter', sans-serif;
+      color: #21243d;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background: var(--gradient);
+    }
+
+    .main-container {
+      display: flex;
+      background: var(--header-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 40px 0;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .sidebar {
+      background: var(--sidebar-bg);
+      border-radius: var(--radius) 0 0 var(--radius);
+      padding: 38px 32px 32px 32px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 260px;
+      max-width: 280px;
+    }
+
+    .profile-image {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          object-position: center top;  /* or try: center center */
+          border-radius: 50%;
+          background: #fff;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+          border: 5px solid rgba(255, 255, 255, 0.2);
+          transition: transform 0.3s ease;
+        }
+
+
+
+    .sidebar h1 {
+      margin: 0;
+      font-size: 2.1rem;
+      font-weight: 700;
+    }
+    .sidebar .position {
+      color: #bbb;
+      font-size: 1.1rem;
+      margin-bottom: 22px;
+      margin-top: -5px;
+    }
+    .sidebar .side-section {
+      width: 100%;
+      margin-bottom: 22px;
+    }
+    .sidebar .side-section h3 {
+      color: #fff;
+      font-size: 1.01rem;
+      font-weight: 600;
+      margin: 10px 0 8px 0;
+      letter-spacing: 0.5px;
+      border-bottom: 1.5px solid #fff1;
+    }
+    .sidebar ul,
+    .sidebar .quick-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar ul li {
+      font-size: 0.97rem;
+      margin-bottom: 7px;
+      opacity: 0.9;
+    }
+
+    .quick-links a {
+      display: inline-block;
+      color: #fff;
+      background: var(--primary);
+      padding: 7px 17px;
+      border-radius: 17px;
+      margin-right: 6px;
+      margin-bottom: 7px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.18s;
+    }
+    .quick-links a:hover {
+      background: var(--secondary);
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 42px 48px 32px 48px;
+      background: var(--bg-light);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      min-width: 320px;
+    }
+
+    .section-title {
+      font-size: 1.43rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 44px 0 20px 0;
+      letter-spacing: 0.04em;
+      border-left: 6px solid var(--primary);
+      padding-left: 18px;
+    }
+
+    .about-text {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      background: #fcfcfd;
+      border-left: 5px solid var(--secondary);
+      border-radius: 13px;
+      color: #444;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 13px #2221;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 30px;
+    }
+    .tech-tag {
+      background: var(--gradient);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 13px;
+      font-size: 0.89rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px,1fr));
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: 0 2px 18px #2221;
+      padding: 22px 28px 15px 28px;
+      margin-bottom: 7px;
+    }
+    .card-title {
+      font-size: 1.13rem;
+      font-weight: bold;
+      color: #233c67;
+      margin-bottom: 10px;
+    }
+    .card-sub {
+      font-size: 1.01rem;
+      color: #666;
+      margin-bottom: 9px;
+    }
+    .card-period {
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.93rem;
+      color: #865bd1;
+      margin-bottom: 13px;
+    }
+    .card-desc {
+      font-size: 0.98rem;
+      color: #4d5061;
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px,1fr));
+      gap: 26px;
+      margin-bottom: 38px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: 0 2px 18px #2221;
+      padding: 22px 20px 15px 23px;
+      border-top: 5px solid var(--primary);
+      transition: box-shadow 0.26s;
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px #667eea41;
+    }
+    .project-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      color: #222;
+      margin-bottom: 6px;
+    }
+    .project-category {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.80rem;
+      font-weight: 600;
+      display: inline-block;
+      padding: 3px 17px;
+      border-radius: 12px;
+      margin-bottom: 7px;
+      letter-spacing: 0.03em;
+    }
+    .project-desc {
+      font-size: 0.97rem;
+      margin-bottom: 14px;
+      color: #454670;
+    }
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 8px 0 11px;
+    }
+    .project-tag {
+      background: #f6f7fc;
+      color: #556;
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9px;
+      margin-bottom: 5px;
+    }
+    .project-links {
+      margin: 8px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .project-link {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 7px 19px;
+      font-size: 0.97rem;
+      transition: background 0.17s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .project-link.secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .project-link:hover {
+      background: var(--secondary);
+      color: #fff;
+    }
+    .project-link.secondary:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Certifications */
+    .cert-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+    .cert-table td {
+      padding: 12px 8px 12px 0;
+      vertical-align: middle;
+    }
+    .cert-img-thumb {
+      width: 256px;
+      height: 256px;
+      object-fit: contain;
+      border-radius: 7px;
+      margin-right: 16px;
+      border: 2px solid var(--primary);
+      box-shadow: 0 2px 8px #2222;
+}
+
+    .cert-details {
+      display: flex;
+      align-items: center;
+    }
+
+    .cert-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .cert-title {
+      font-weight: 700;
+      color: #233c67;
+    }
+    .cert-org {
+      font-size: 0.93rem;
+      color: #737987;
+    }
+    .cert-date {
+      font-size: 0.99rem;
+      color: var(--secondary);
+      font-family: 'Fira Mono',monospace;
+      text-align: right;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+      margin-top: 48px;
+      padding: 28px 0 7px 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px #2222;
+    }
+    /* Responsive design */
+    @media (max-width: 1080px) {
+      .main-container {
+        flex-direction: column;
+        margin: 16px 0;
+      }
+      .sidebar {
+        border-radius: var(--radius) var(--radius) 0 0;
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: unset;
+        max-width: unset;
+        padding: 28px 22px 18px 22px;
+      }
+      .content-area {
+        border-radius: 0 0 var(--radius) var(--radius);
+        padding: 28px 12px 22px 12px;
+        min-width: unset;
+      }
+    }
+    @media (max-width: 685px) {
+      .sidebar {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 5px 18px 5px;
+      }
+      .content-area {
+        padding: 16px 5px 22px 5px;
+      }
+      .cards-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <img src="Profile-Image.jpg" alt="Profile image" class="profile-image"/>
+      <h1>Geetanjali Singh</h1>
+      <h4>Enthusiastic Data Scientist</h4> 
+      <div class="side-section">
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: <a href="mailto:gssingh6393@gmail.com" style="color:#fff;">gssingh6393@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/geetanjali--singh/" style="color:#fff;" target="_blank">geetanjali--singh</a></li>
+          <li>GitHub: <a href="https://github.com/ge-studi" style="color:#fff;" target="_blank">ge-studi</a></li>
+          <li> Medium: <a href="https://medium.com/@gssingh6393" style="color: #fff; text-decoration: underline;" target="_blank" rel="noopener noreferrer" aria-label="Visit gssingh6393 on Medium">gssingh6393</a></li>
+
+  
+
+        </ul>
+      </div>
+      <div class="side-section">
+        <h3>Core Skills</h3>
+        <ul>
+          <li>Python --> Machine Learning</li>
+          <li>Deep Learning --> NLP, BERT</li>
+          <li>Frameworks --> TensorFlow, Scikit-learn, KEras, PyTorch</li>
+          <li>Data Visualization --> Matplotlib, Seaborn</li>
+          <li>Deployment --> Streamlit, FastAPI, Docker</li>
+          <li> Version Control --> Git, Github</li>
+          <li>Soft Skills --> Analytical Thinking, Communication</li>
+
+        </ul>
+      </div>
+      <div class="quick-links">
+        <a href="https://github.com/ge-studi" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/geetanjali--singh/" target="_blank">LinkedIn</a>
+        <a href="mailto:gssingh6393@gmail.com">Email</a>
+        <a href="https://medium.com/@gssingh6393">Medium</a>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="content-area">
+      <section>
+        <div class="section-title">About Me</div>
+        <div class="about-text">
+          I'm a data scientist passionate about transforming real-world problems into intelligent machine learning solutions. My background spans across NLP, fraud detection, and healthcare analytics. I leverage cutting-edge AI technologies to drive meaningful insights and create impactful solutions.
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Machine Learning</span>
+          <span class="tech-tag">Deep Learning</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">BERT</span>
+          <span class="tech-tag">Streamlit</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">FastAPI</span>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <div class="section-title">Education</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">B.Tech, Information Technology</div>
+          <div class="card-sub">Jaypee University of Information Technology</div>
+          <div class="card-period">2020 – 2024</div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="section-title">Experience</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">Data Consultant</div>
+          <div class="card-sub">PCI, Lucknow, India</div>
+          <div class="card-period">June 2025 - Present</div>
+          <div class="card-desc">Used data to generate actionable insights from unstructured data, supporting decision-making in social impact initiatives for poverty reduction and livelihood development.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Data Analytics Job Simulation</div>
+          <div class="card-sub">Deloitte Australia (Forage), Remote</div>
+          <div class="card-period">April 2025</div>
+          <div class="card-desc">Completed Deloitte job simulation in data analysis and forensic technology, using Tableau for dashboard visualization and Excel for data classification and business insights.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Software Developer</div>
+          <div class="card-sub">Antier Solutions, Mohali, India</div>
+          <div class="card-period">July 2024 - Nov 2024</div>
+          <div class="card-desc">Engineered secure, gas-optimized Ethereum smart contracts using Solidity, Hardhat, and ethers.js, with robust JavaScript test suites and audit-driven enhancements.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Machine Learning Intern</div>
+          <div class="card-sub">RDSO, Lucknow, India</div>
+          <div class="card-period">May 2023 - July 2023</div>
+          <div class="card-desc">Optimized scalable ML models with hyperparameter tuning, advanced feature engineering, and efficient preprocessing using TensorFlow, scikit-learn, Pandas, Matplotlib, and Seaborn.</div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section-title">Featured Projects</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-category">NLP • Machine Learning</div>
+          <div class="project-title">AI Resume Screener</div>
+          <div class="project-desc">Classifies resumes for jobs using TF-IDF and BERT-based features with Logistic Regression and Random Forest. Extracts key skills and provides confidence scores, packaged in Streamlit UI.</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">BERT</span>
+            <span class="project-tag">TF-IDF</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ge-studi/AI-Resume-Screener" target="_blank" class="project-link">View Code</a>
+            <a href="https://ai-resume-screener-jnmcpfjlaoxmapp6kyn7ank.streamlit.app/" target="_blank" class="project-link secondary">Demo</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-category">Data Science • Analytics</div>
+          <div class="project-title">Livelihood Risk Analysis</div>
+          <div class="project-desc">Predicts household vulnerability using XGBoost, FastAPI, Streamlit, and SHAP. Explains model predictions for users.</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">SHAP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ge-studi/livelihood-risk" target="_blank" class="project-link">View Code</a>
+            <a href="https://medium.com/@gssingh6393/livelihood-risk-predictor-a-machine-learning-web-app-with-shap-explainability-631fbe7d1687" target="_blank" class="project-link secondary">View Details</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-category">Machine Learning • Security</div>
+          <div class="project-title">Financial Fraud Detection</div>
+          <div class="project-desc">Real-time fraud detection using Logistic Regression, Decision Tree, XGBoost in a Streamlit web app. Predicts the likelihood of transaction fraud by features.</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag">Decision Tree</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ge-studi/Financial-Fraud-Detection" target="_blank" class="project-link">View Code</a>
+            <a href="https://medium.com/@gssingh6393/case-study-963e50e37af9" target="_blank" class="project-link secondary">Case Study</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-category">Healthcare • Predictive Analytics</div>
+          <div class="project-title">Heart Disease Prediction</div>
+          <div class="project-desc">Predicts heart disease using Logistic Regression, KNN, Random Forest, and Gradient Boosting. GUI for real-time risk prediction.</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">Gradient Boosting</span>
+            <span class="project-tag">Healthcare</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ge-studi/Heart_Disease_Prediction" target="_blank" class="project-link">View Code</a>
+            <a href="https://drive.google.com/file/d/1KEiA4EwQS-xsks1E1nEb8aZPxYTwa1DK/view?usp=sharing" target="_blank" class="project-link secondary">Model Analysis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+
+      <div class="section-title">Certifications</div>
+<table class="cert-table" style="width: 100%; border-spacing: 0 20px;">
+  <!-- Oracle Certificate -->
+  <tr>
+    <td colspan="2">
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <a href="Certifications/devgymcertificateOracle_page-0001.jpg" target="_blank">
+          <img 
+            src="Certifications/devgymcertificateOracle_page-0001.jpg" 
+            alt="Oracle certificate" 
+            style="width: 100%; max-width: 1333px; height: auto; border: 1px solid #ccc; border-radius: 8px;"
+          >
+        </a>
+        <div style="flex: 1.cap;">
+          <div style="font-weight: bold; font-size: 1.3rem;">Databases for Developers: Foundations Certificate</div>
+          <div style="color: #777; margin-top: 4px;">Oracle</div>
+          <div style="margin-top: 8px;">Feb 2025</div>
+        </div>
+      </div>
+    </td>
+  </tr>
+
+  <!-- Python Certificate -->
+      <tr>
+        <td colspan="2">
+          <div style="display: flex; align-items: flex-start; gap: 20px;">
+            <a href="Certifications/Python_certificate_page-0001.jpg" target="_blank">
+              <img 
+                src="Certifications/Python_certificate_page-0001.jpg" 
+                alt="Python Certificate" 
+                style="width: 100%; max-width: 500px; height: auto; border: 1px solid #ccc; border-radius: 8px;"
+              >
+            </a>
+            <div style="flex: 1.cap;">
+              <div style="font-weight: bold; font-size: 1.3rem;">Python Certificate</div>
+              <div style="color: #777; margin-top: 4px;">GeeksforGeeks</div>
+              <div style="margin-top: 8px;">May 2025</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+     
+      <tr>
+      <td colspan="2">
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+          <a href="Certifications/Agile_Scrum certificate_page-0001.jpg" target="_blank">
+            <img 
+              src="Certifications/Agile_Scrum certificate_page-0001.jpg" 
+              alt="Agile Scrum Certificate" 
+              style="width: 100%; max-width: 1500px; height: auto; border: 1px solid #ccc; border-radius: 8px;"
+            >
+          </a>
+          <div style="flex: 1.cap;">
+            <div style="font-weight: bold; font-size: 1.3rem;">Learn Agile and Scrum Fundamentals with JIRA (LIVE DEMO)</div>
+            <div style="color: #777; margin-top: 4px;">TheTestingAcademy</div>
+            <div style="margin-top: 8px;">Dec 2024</div>
+          </div>
+        </div>
+      </td>
+    </tr>
+</table>
+
+      <!-- Footer -->
+      <footer>
+        <p>© 2025 Geetanjali Singh • Built with ❤️ and lots of coffee</p>
+        <p>Turning data into insights, one algorithm at a time</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
